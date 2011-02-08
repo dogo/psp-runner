@@ -1,0 +1,181 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		DD2516781300D1DA00D557A8 /* AnykeyScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AnykeyScreen.cpp; path = "../PSP Project/Src/AnykeyScreen.cpp"; sourceTree = SOURCE_ROOT; };
+		DD2516791300D1DA00D557A8 /* GameScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScreen.cpp; path = "../PSP Project/Src/GameScreen.cpp"; sourceTree = SOURCE_ROOT; };
+		DD25167A1300D1DA00D557A8 /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = "../PSP Project/Src/Main.cpp"; sourceTree = SOURCE_ROOT; };
+		DD25167B1300D1DA00D557A8 /* Obstacles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Obstacles.cpp; path = "../PSP Project/Src/Obstacles.cpp"; sourceTree = SOURCE_ROOT; };
+		DD25167C1300D1DA00D557A8 /* Ranking.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ranking.cpp; path = "../PSP Project/Src/Ranking.cpp"; sourceTree = SOURCE_ROOT; };
+		DD25167D1300D1DA00D557A8 /* Runner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Runner.cpp; path = "../PSP Project/Src/Runner.cpp"; sourceTree = SOURCE_ROOT; };
+		DD25167E1300D1DA00D557A8 /* ScreenManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ScreenManager.cpp; path = "../PSP Project/Src/ScreenManager.cpp"; sourceTree = SOURCE_ROOT; };
+		DD2516801300D1EC00D557A8 /* Drawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Drawing.cpp; path = "../PSP Project/Src/util/Drawing.cpp"; sourceTree = SOURCE_ROOT; };
+		DD2516841300D21500D557A8 /* AnykeyScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnykeyScreen.h; path = "../PSP Project/Include/AnykeyScreen.h"; sourceTree = SOURCE_ROOT; };
+		DD2516851300D21500D557A8 /* GameScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScreen.h; path = "../PSP Project/Include/GameScreen.h"; sourceTree = SOURCE_ROOT; };
+		DD2516861300D21500D557A8 /* Icon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Icon.h; path = "../PSP Project/Include/Icon.h"; sourceTree = SOURCE_ROOT; };
+		DD2516871300D21500D557A8 /* ILib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ILib.h; path = "../PSP Project/Include/ILib.h"; sourceTree = SOURCE_ROOT; };
+		DD2516881300D21500D557A8 /* IScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IScreen.h; path = "../PSP Project/Include/IScreen.h"; sourceTree = SOURCE_ROOT; };
+		DD2516891300D21500D557A8 /* Main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Main.h; path = "../PSP Project/Include/Main.h"; sourceTree = SOURCE_ROOT; };
+		DD25168A1300D21500D557A8 /* Obstacles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Obstacles.h; path = "../PSP Project/Include/Obstacles.h"; sourceTree = SOURCE_ROOT; };
+		DD25168B1300D21500D557A8 /* Ranking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ranking.h; path = "../PSP Project/Include/Ranking.h"; sourceTree = SOURCE_ROOT; };
+		DD25168C1300D21500D557A8 /* Runner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Runner.h; path = "../PSP Project/Include/Runner.h"; sourceTree = SOURCE_ROOT; };
+		DD25168D1300D21500D557A8 /* ScreenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScreenManager.h; path = "../PSP Project/Include/ScreenManager.h"; sourceTree = SOURCE_ROOT; };
+		DD25168E1300D22200D557A8 /* Drawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Drawing.h; path = "../PSP Project/Include/util/Drawing.h"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		DD2516671300D0B300D557A8 = {
+			isa = PBXGroup;
+			children = (
+				DD2516771300D1C100D557A8 /* Source */,
+				DD2516761300D1B900D557A8 /* Include */,
+			);
+			sourceTree = "<group>";
+		};
+		DD2516761300D1B900D557A8 /* Include */ = {
+			isa = PBXGroup;
+			children = (
+				DD2516841300D21500D557A8 /* AnykeyScreen.h */,
+				DD2516851300D21500D557A8 /* GameScreen.h */,
+				DD2516861300D21500D557A8 /* Icon.h */,
+				DD2516871300D21500D557A8 /* ILib.h */,
+				DD2516881300D21500D557A8 /* IScreen.h */,
+				DD2516891300D21500D557A8 /* Main.h */,
+				DD25168A1300D21500D557A8 /* Obstacles.h */,
+				DD25168B1300D21500D557A8 /* Ranking.h */,
+				DD25168C1300D21500D557A8 /* Runner.h */,
+				DD25168D1300D21500D557A8 /* ScreenManager.h */,
+				DD2516811300D1F800D557A8 /* util */,
+			);
+			name = Include;
+			sourceTree = "<group>";
+		};
+		DD2516771300D1C100D557A8 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				DD25167F1300D1DF00D557A8 /* util */,
+				DD2516781300D1DA00D557A8 /* AnykeyScreen.cpp */,
+				DD2516791300D1DA00D557A8 /* GameScreen.cpp */,
+				DD25167A1300D1DA00D557A8 /* Main.cpp */,
+				DD25167B1300D1DA00D557A8 /* Obstacles.cpp */,
+				DD25167C1300D1DA00D557A8 /* Ranking.cpp */,
+				DD25167D1300D1DA00D557A8 /* Runner.cpp */,
+				DD25167E1300D1DA00D557A8 /* ScreenManager.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		DD25167F1300D1DF00D557A8 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				DD2516801300D1EC00D557A8 /* Drawing.cpp */,
+			);
+			name = util;
+			sourceTree = "<group>";
+		};
+		DD2516811300D1F800D557A8 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				DD25168E1300D22200D557A8 /* Drawing.h */,
+			);
+			name = util;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		DD2516981300D2D800D557A8 /* Compile */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = DD2516A21300D2DF00D557A8 /* Build configuration list for PBXLegacyTarget "Compile" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = "/Users/dogo/Development/workspace/psp/psp-runner/PSP Project";
+			dependencies = (
+			);
+			name = Compile;
+			passBuildSettingsInEnvironment = 1;
+			productName = Compile;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		DD2516691300D0B300D557A8 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = DD25166C1300D0B300D557A8 /* Build configuration list for PBXProject "Runner" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = DD2516671300D0B300D557A8;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DD2516981300D2D800D557A8 /* Compile */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		DD25166A1300D0B300D557A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+		DD25166B1300D0B300D557A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				compile = make;
+			};
+			name = Release;
+		};
+		DD2516991300D2D800D557A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		DD25169A1300D2D800D557A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DD25166C1300D0B300D557A8 /* Build configuration list for PBXProject "Runner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD25166A1300D0B300D557A8 /* Debug */,
+				DD25166B1300D0B300D557A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD2516A21300D2DF00D557A8 /* Build configuration list for PBXLegacyTarget "Compile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD2516991300D2D800D557A8 /* Debug */,
+				DD25169A1300D2D800D557A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DD2516691300D0B300D557A8 /* Project object */;
+}
