@@ -16,6 +16,7 @@ STDLIBS= -losl -lmikmod -lpng -lz -lpsphprm -lstdc++ \
 LIBS=$(STDLIBS)$(YOURLIBS)
 
 BUILD_PRX = 1
+SIGN_PRX = 1
 PSP_FW_VERSION=390
 EXTRA_TARGETS = EBOOT.PBP
 PSP_EBOOT_TITLE = Runner
