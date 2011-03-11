@@ -1,5 +1,5 @@
 TARGET = Runner
-CFLAGS = -G0 -Wall -O2
+CFLAGS = -G0 -g -Wall -O2
 CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti
 ASFLAGS = $(CFLAGS)
 
@@ -16,7 +16,7 @@ STDLIBS= -losl -lmikmod -lpng -lz -lpsphprm -lstdc++ \
 LIBS=$(STDLIBS)$(YOURLIBS)
 
 BUILD_PRX = 1
-SIGN_PRX = 1
+SIGN_PRX = 0
 PSP_FW_VERSION=390
 EXTRA_TARGETS = EBOOT.PBP
 PSP_EBOOT_TITLE = Runner

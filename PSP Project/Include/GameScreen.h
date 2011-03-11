@@ -31,13 +31,12 @@ private:
 	OSL_IMAGE *imgBackground;
 	OSL_IMAGE *imgGround;
 	//Number of Objects
-	/*const*/ int NB_OBJECTS;
-	//Color used as transparent
+	static const int NB_OBJECTS = 20;
+	OBJECT objects[NB_OBJECTS];
 	RUNNER runner;
 	Runner *mRunner;
 	Obstacles *mObstacles;
 	Ranking *mMemoryStick;
-	OBJECT objects[/*NB_OBJECTS*/20];
 	float difficulty;
 	float time;
 	bool mPauseGame;

@@ -9,7 +9,6 @@
 GameScreen::GameScreen()
 {
 	mType = OSL_DIALOG_NONE;
-	NB_OBJECTS = 20;
 
 	imgBackground = oslLoadImageFilePNG("/Res/background.png", OSL_IN_RAM, OSL_PF_8888);
 	imgGround = oslLoadImageFilePNG("/Res/ground.png", OSL_IN_RAM, OSL_PF_8888);

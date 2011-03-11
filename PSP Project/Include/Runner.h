@@ -31,6 +31,5 @@ public:
 	void handleRunner(RUNNER &runner);
 	void drawRunner(RUNNER &runner);
 	RUNNER createRunner();
-
 };
 #endif
