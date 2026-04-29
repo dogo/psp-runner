@@ -9,7 +9,8 @@
 AnykeyScreen::AnykeyScreen()
 {
 	mWait = 0;
-	AnykeySplash = oslLoadImageFilePNG("/Res/anykeylogo.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+	char anykeySplashPath[] = "/Res/anykeylogo.png";
+	AnykeySplash = oslLoadImageFilePNG(anykeySplashPath, OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
 	mySplash = new Drawing;
 }
 

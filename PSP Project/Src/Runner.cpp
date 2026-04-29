@@ -8,7 +8,8 @@
 Runner::Runner()
 {
 	oslSetTransparentColor(colorMask);
-	imgRunner = oslLoadImageFilePNG("/Res/runner.png", OSL_IN_RAM, OSL_PF_8888);
+	char runnerPath[] = "/Res/runner.png";
+	imgRunner = oslLoadImageFilePNG(runnerPath, OSL_IN_RAM, OSL_PF_8888);
 	oslDisableTransparentColor();
 
 	if (!imgRunner)

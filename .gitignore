@@ -1,0 +1,6 @@
+# PSP build artifacts
+PSP Project/EBOOT.PBP
+PSP Project/PARAM.SFO
+PSP Project/*.elf
+PSP Project/*.prx
+PSP Project/**/*.o

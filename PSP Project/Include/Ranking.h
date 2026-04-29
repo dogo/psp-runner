@@ -6,7 +6,6 @@
 #define RANKING_H_INCLUDED
 
 #include "../Include/ILib.h"
-#include "../Include/Icon.h"
 
 class Ranking
 {
@@ -16,9 +15,9 @@ private:
 	/**
 	*	Data for save and load:
 	*/
-	char *gameTitle;
-	char *gameID;
-	char *saveName;
+	const char *gameTitle;
+	const char *gameID;
+	const char *saveName;
 
 public:
 	Ranking();

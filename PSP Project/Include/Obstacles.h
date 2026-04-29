@@ -9,7 +9,7 @@
 #include "../Include/Runner.h"
 
 //Possible objects types.
-typedef enum TYPE_OBJECT {
+enum TYPE_OBJECT {
 	STONE				// Stone grounded
 };
 

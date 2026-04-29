@@ -9,7 +9,8 @@ Obstacles::Obstacles()
 {
 	//The following images have a transparent color
 	oslSetTransparentColor(colorMask);
-	imgStone = oslLoadImageFilePNG("/Res/stone.png", OSL_IN_RAM, OSL_PF_8888);
+	char stonePath[] = "/Res/stone.png";
+	imgStone = oslLoadImageFilePNG(stonePath, OSL_IN_RAM, OSL_PF_8888);
 	oslDisableTransparentColor();
 
 	if (!imgStone)

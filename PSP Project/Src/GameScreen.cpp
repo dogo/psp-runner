@@ -10,8 +10,10 @@ GameScreen::GameScreen()
 {
 	mType = OSL_DIALOG_NONE;
 
-	imgBackground = oslLoadImageFilePNG("/Res/background.png", OSL_IN_RAM, OSL_PF_8888);
-	imgGround = oslLoadImageFilePNG("/Res/ground.png", OSL_IN_RAM, OSL_PF_8888);
+	char backgroundPath[] = "/Res/background.png";
+	imgBackground = oslLoadImageFilePNG(backgroundPath, OSL_IN_RAM, OSL_PF_8888);
+	char groundPath[] = "/Res/ground.png";
+	imgGround = oslLoadImageFilePNG(groundPath, OSL_IN_RAM, OSL_PF_8888);
 
 	//Load Music
 	music = oslLoadSoundFileMP3("/Res/test.mp3", OSL_FMT_STREAM);

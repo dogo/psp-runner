@@ -20,7 +20,7 @@ SIGN_PRX = 0
 PSP_FW_VERSION=390
 EXTRA_TARGETS = EBOOT.PBP
 PSP_EBOOT_TITLE = Runner
-PSP_EBOOT_ICON = ICON0.png
+PSP_EBOOT_ICON = ICON0.PNG
 
 PSPSDK=$(shell psp-config --pspsdk-path)
 include $(PSPSDK)/lib/build.mak
