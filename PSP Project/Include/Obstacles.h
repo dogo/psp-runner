@@ -27,10 +27,16 @@ class Obstacles
 {
 private:
 	OSL_IMAGE *imgStone;
+	int mComboRemaining;
+	float mRecoveryGap;
+
+	float randomRange(float minValue, float maxValue);
+	float clamp(float value, float minValue, float maxValue);
 
 public:
 	Obstacles();
 	~Obstacles();
+	void resetSpawn();
 	void handleObject(OBJECT &obj, RUNNER &runner);
 	void drawObject(OBJECT obj);
 	OBJECT createStone(float positionX);

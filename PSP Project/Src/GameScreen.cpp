@@ -43,6 +43,7 @@ void GameScreen::initGame()
 	runner = mRunner->createRunner();
 
 	//Objects Initialization
+	mObstacles->resetSpawn();
 	objects[0] = mObstacles->createStone(OSL_SCREEN_WIDTH);
 	printf("OSL_SCREEN_WIDTH %d\n",OSL_SCREEN_WIDTH);
 	//Each stone is randomly placed at a distance from each other)

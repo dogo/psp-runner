@@ -4,9 +4,14 @@
 //**************************************************************************
 
 #include "../Include/Obstacles.h"
+#include <psprtc.h>
+#include <stdlib.h>
 
 Obstacles::Obstacles()
 {
+	srand((unsigned int)sceKernelGetSystemTimeLow());
+	resetSpawn();
+
 	//The following images have a transparent color
 	oslSetTransparentColor(colorMask);
 	char stonePath[] = "/Res/stone.png";
@@ -20,6 +25,26 @@ Obstacles::Obstacles()
 Obstacles::~Obstacles()
 {
 	oslDeleteImage(imgStone);
+}
+
+void Obstacles::resetSpawn()
+{
+	mComboRemaining = 0;
+	mRecoveryGap = 0.0f;
+}
+
+float Obstacles::randomRange(float minValue, float maxValue)
+{
+	return minValue + (float)(rand() % 1000) / 999.0f * (maxValue - minValue);
+}
+
+float Obstacles::clamp(float value, float minValue, float maxValue)
+{
+	if (value < minValue)
+		return minValue;
+	if (value > maxValue)
+		return maxValue;
+	return value;
 }
 
 // Handle an object (whatever its type) with the runner (including collisions)
@@ -67,8 +92,43 @@ OBJECT Obstacles::createStone(float positionX)
 //And taking into account the difficulty for distance.
 OBJECT Obstacles::createStoneRandom(OBJECT previousObject, float difficulty)
 {
-	//Distance to the previous stone
-	float distance = difficulty + rand() % (int)difficulty;
+	float pressure = clamp((199.0f - difficulty) / 120.0f, 0.0f, 1.0f);
+
+	float minGap = 155.0f - pressure * 45.0f;
+	float maxGap = 300.0f - pressure * 75.0f;
+	float distance = randomRange(minGap, maxGap);
+
+	if (mRecoveryGap > 0.0f)
+	{
+		distance = mRecoveryGap;
+		mRecoveryGap = 0.0f;
+	}
+	else if (mComboRemaining > 0)
+	{
+		distance = previousObject.width + randomRange(8.0f, 18.0f);
+		mComboRemaining--;
+
+		if (mComboRemaining == 0)
+			mRecoveryGap = randomRange(maxGap + 20.0f, maxGap + 95.0f);
+	}
+	else
+	{
+		int roll = rand() % 100;
+		int comboChance = 8 + (int)(pressure * 24.0f);
+		int longGapChance = 18 - (int)(pressure * 8.0f);
+
+		if (roll < comboChance)
+		{
+			mComboRemaining = 1;
+			if (pressure > 0.55f && rand() % 100 < 28)
+				mComboRemaining = 2;
+		}
+		else if (roll < comboChance + longGapChance)
+		{
+			distance = randomRange(maxGap, maxGap + 115.0f);
+		}
+	}
+
 	return createStone(previousObject.x + distance);
 }
 
