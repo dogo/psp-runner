@@ -10,7 +10,11 @@
 
 //Possible objects types.
 enum TYPE_OBJECT {
-	STONE				// Stone grounded
+	STONE = 0,			// Stone grounded
+	SPIKES,
+	STUMP,
+	CRYSTAL,
+	NB_OBSTACLE_TYPES
 };
 
 //Info about the objects
@@ -26,12 +30,14 @@ typedef struct	{
 class Obstacles
 {
 private:
-	OSL_IMAGE *imgStone;
+	OSL_IMAGE *imgObstacles[NB_OBSTACLE_TYPES];
 	int mComboRemaining;
 	float mRecoveryGap;
 
 	float randomRange(float minValue, float maxValue);
 	float clamp(float value, float minValue, float maxValue);
+	TYPE_OBJECT chooseObstacleType(float pressure);
+	OBJECT createObject(TYPE_OBJECT type, float positionX);
 
 public:
 	Obstacles();

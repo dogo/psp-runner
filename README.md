@@ -55,9 +55,12 @@ PSP/GAME/Runner/
   Res/
     anykeylogo.png
     background.png
+    crystal.png
     ground.png
     runner.png
+    spikes.png
     stone.png
+    stump.png
     test.mp3
 ```
 

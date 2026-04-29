@@ -15,16 +15,23 @@ Obstacles::Obstacles()
 	//The following images have a transparent color
 	oslSetTransparentColor(colorMask);
 	char stonePath[] = "/Res/stone.png";
-	imgStone = oslLoadImageFilePNG(stonePath, OSL_IN_RAM, OSL_PF_8888);
+	char spikesPath[] = "/Res/spikes.png";
+	char stumpPath[] = "/Res/stump.png";
+	char crystalPath[] = "/Res/crystal.png";
+	imgObstacles[STONE] = oslLoadImageFilePNG(stonePath, OSL_IN_RAM, OSL_PF_8888);
+	imgObstacles[SPIKES] = oslLoadImageFilePNG(spikesPath, OSL_IN_RAM, OSL_PF_8888);
+	imgObstacles[STUMP] = oslLoadImageFilePNG(stumpPath, OSL_IN_RAM, OSL_PF_8888);
+	imgObstacles[CRYSTAL] = oslLoadImageFilePNG(crystalPath, OSL_IN_RAM, OSL_PF_8888);
 	oslDisableTransparentColor();
 
-	if (!imgStone)
+	if (!imgObstacles[STONE] || !imgObstacles[SPIKES] || !imgObstacles[STUMP] || !imgObstacles[CRYSTAL])
 		oslFatalError("At least one file is missing. Please copy all the files in the game directory.");
 }
 
 Obstacles::~Obstacles()
 {
-	oslDeleteImage(imgStone);
+	for (int i = 0; i < NB_OBSTACLE_TYPES; i++)
+		oslDeleteImage(imgObstacles[i]);
 }
 
 void Obstacles::resetSpawn()
@@ -47,17 +54,38 @@ float Obstacles::clamp(float value, float minValue, float maxValue)
 	return value;
 }
 
+TYPE_OBJECT Obstacles::chooseObstacleType(float pressure)
+{
+	int roll = rand() % 100;
+	int spikesChance = 5 + (int)(pressure * 22.0f);
+	int crystalChance = 4 + (int)(pressure * 12.0f);
+	int stumpChance = 18;
+
+	if (roll < spikesChance)
+		return SPIKES;
+	if (roll < spikesChance + crystalChance)
+		return CRYSTAL;
+	if (roll < spikesChance + crystalChance + stumpChance)
+		return STUMP;
+	return STONE;
+}
+
 // Handle an object (whatever its type) with the runner (including collisions)
 void Obstacles::handleObject(OBJECT &obj, RUNNER &runner)
 {
 	switch (obj.type)
 	{
 	case STONE:
+	case SPIKES:
+	case STUMP:
+	case CRYSTAL:
 		if (collision(runner, obj))
 		{
 			//Runner dies
 			runner.isDead = true;
 		}
+		break;
+	case NB_OBSTACLE_TYPES:
 		break;
 	}
 }
@@ -68,8 +96,13 @@ void Obstacles::drawObject(OBJECT obj)
 	switch (obj.type)
 	{
 	case STONE:
+	case SPIKES:
+	case STUMP:
+	case CRYSTAL:
 		// Drawing relative to the camera ...
-		oslDrawImageXY(imgStone, (int)(obj.x - gCameraX), (int)(obj.y - gCameraY));
+		oslDrawImageXY(imgObstacles[obj.type], (int)(obj.x - gCameraX), (int)(obj.y - gCameraY));
+		break;
+	case NB_OBSTACLE_TYPES:
 		break;
 	}
 }
@@ -77,11 +110,16 @@ void Obstacles::drawObject(OBJECT obj)
 //Create a stone with initial position X
 OBJECT Obstacles::createStone(float positionX)
 {
+	return createObject(STONE, positionX);
+}
+
+OBJECT Obstacles::createObject(TYPE_OBJECT type, float positionX)
+{
 	OBJECT obj;
-	obj.type = STONE;
-	//Stone Size
-	obj.width = (float)imgStone->sizeX;
-	obj.height = (float)imgStone->sizeY;
+	obj.type = type;
+	//Object Size
+	obj.width = (float)imgObstacles[type]->sizeX;
+	obj.height = (float)imgObstacles[type]->sizeY;
 	//The position is always vertical to the ground
 	obj.x = positionX;
 	obj.y = groundPosition - obj.height;
@@ -129,7 +167,7 @@ OBJECT Obstacles::createStoneRandom(OBJECT previousObject, float difficulty)
 		}
 	}
 
-	return createStone(previousObject.x + distance);
+	return createObject(chooseObstacleType(pressure), previousObject.x + distance);
 }
 
 
