@@ -7,6 +7,70 @@
 #include <psprtc.h>
 #include <stdlib.h>
 
+typedef struct {
+	float left;
+	float top;
+	float right;
+	float bottom;
+} HIT_BOX;
+
+static HIT_BOX makeRunnerHitBox(RUNNER runner)
+{
+	HIT_BOX box;
+
+	box.left = runner.x + 4.0f;
+	box.right = runner.x + runner.width - 4.0f;
+
+	if (runner.isGrounded)
+	{
+		box.top = runner.y + 3.0f;
+		box.bottom = runner.y + runner.height - 2.0f;
+	}
+	else
+	{
+		box.top = runner.y + 5.0f;
+		box.bottom = runner.y + runner.height - 3.0f;
+	}
+
+	return box;
+}
+
+static HIT_BOX makeObstacleHitBox(OBJECT obj)
+{
+	HIT_BOX box;
+
+	switch (obj.type)
+	{
+	case SPIKES:
+		box.left = obj.x + 3.0f;
+		box.top = obj.y + 6.0f;
+		box.right = obj.x + obj.width - 3.0f;
+		box.bottom = obj.y + obj.height;
+		break;
+	case STUMP:
+		box.left = obj.x + 4.0f;
+		box.top = obj.y + 6.0f;
+		box.right = obj.x + obj.width - 3.0f;
+		box.bottom = obj.y + obj.height;
+		break;
+	case CRYSTAL:
+		box.left = obj.x + 4.0f;
+		box.top = obj.y + 3.0f;
+		box.right = obj.x + obj.width - 4.0f;
+		box.bottom = obj.y + obj.height;
+		break;
+	case STONE:
+	default:
+		box.left = obj.x + 2.0f;
+		box.top = obj.y + 3.0f;
+		box.right = obj.x + obj.width - 2.0f;
+		box.bottom = obj.y + obj.height;
+		break;
+	}
+
+	return box;
+}
+
 Obstacles::Obstacles()
 {
 	srand((unsigned int)sceKernelGetSystemTimeLow());
@@ -174,6 +238,9 @@ OBJECT Obstacles::createStoneRandom(OBJECT previousObject, float difficulty)
 //Returns TRUE if there is a collision between the object and the runner
 bool Obstacles::collision(RUNNER runner, OBJECT obj)
 {
+	HIT_BOX runnerBox = makeRunnerHitBox(runner);
+	HIT_BOX objectBox = makeObstacleHitBox(obj);
+
 	//Overlapping two rectangles
-	return (runner.x + runner.width >= obj.x && runner.x < obj.x + obj.width && runner.y + runner.height >= obj.y && runner.y < obj.y + obj.height);
+	return (runnerBox.right > objectBox.left && runnerBox.left < objectBox.right && runnerBox.bottom > objectBox.top && runnerBox.top < objectBox.bottom);
 }
