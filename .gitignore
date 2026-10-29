@@ -4,3 +4,6 @@ PSP Project/PARAM.SFO
 PSP Project/*.elf
 PSP Project/*.prx
 PSP Project/**/*.o
+
+# Saved best time
+PSP Project/Res/best.dat
