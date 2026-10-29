@@ -31,6 +31,10 @@ extern int mNextScreen;
 const OSL_COLOR colorMask = RGB(255, 0, 255);
 const float gravity = 0.25f;
 const float speedJumping = -6.0f;
+//Releasing Cross while going up limits the upward speed to this (short hop)
+const float jumpCutSpeed = -2.0f;
+//A Cross press is remembered this many frames, so pressing just before landing still jumps
+const int jumpBufferFrames = 6;
 const float groundPosition = 240.0f;
 //If we go further than that in the screen, the camera moves
 const float cameraLimitX = 240.0f;

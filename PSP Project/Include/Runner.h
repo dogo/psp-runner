@@ -16,6 +16,8 @@ typedef struct	{
 	//Speed
 	float vx, vy;
 	int frameNb;
+	//Frames left to perform a buffered jump
+	int jumpBuffer;
 	bool isGrounded;
 	bool isDead;
 } RUNNER;

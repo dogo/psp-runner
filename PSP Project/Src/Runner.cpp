@@ -49,14 +49,22 @@ void Runner::handleRunner(RUNNER &runner)
 		runner.isGrounded = true;
 	}
 
-	//Cross: Jump
-	if (osl_pad.pressed.cross && runner.isGrounded)
+	//Cross: Jump (buffered, so a press a few frames before landing is not lost)
+	if (osl_pad.pressed.cross)
+		runner.jumpBuffer = jumpBufferFrames;
+	if (runner.jumpBuffer > 0 && runner.isGrounded)
 	{
-		oslFlushKey();
 		//negative speed to jump
 		runner.vy = speedJumping;
 		runner.isGrounded = false;
+		runner.jumpBuffer = 0;
 	}
+	else if (runner.jumpBuffer > 0)
+		runner.jumpBuffer--;
+
+	//Releasing Cross while going up cuts the jump, so the player controls its length
+	if (osl_pad.released.cross && runner.vy < jumpCutSpeed)
+		runner.vy = jumpCutSpeed;
 
 	if(!runner.isGrounded)
 		runner.height = imgRunner->frameSizeY-5; //-5 Jumping
@@ -84,6 +92,7 @@ RUNNER Runner::createRunner()
 {
 	RUNNER runner;
 	runner.frameNb = 0;
+	runner.jumpBuffer = 0;
 	//Runner Size
 	runner.width = imgRunner->frameSizeX;
 	runner.height = imgRunner->frameSizeY;
