@@ -30,8 +30,9 @@ private:
 	OSL_SOUND *music;
 	OSL_IMAGE *imgBackground;
 	OSL_IMAGE *imgGround;
-	//Number of Objects
-	static const int NB_OBJECTS = 20;
+	//Number of Objects: few, so new ones pick up the current difficulty sooner.
+	//8 objects span >= 577px in the worst case (gaps 110/28/28/245...), more than the 500px the screen needs
+	static const int NB_OBJECTS = 8;
 	OBJECT objects[NB_OBJECTS];
 	RUNNER runner;
 	Runner *mRunner;
