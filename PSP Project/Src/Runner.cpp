@@ -36,8 +36,8 @@ void Runner::handleRunner(RUNNER &runner)
 	runner.y = runner.y + runner.vy;
 	runner.vy = runner.vy + gravity;
 
-	//The horizontal velocity increases (acceleration) but does not exceed 4
-	runner.vx = min(runner.vx + 0.03f, 4.0f);
+	//Fast acceleration up to 4, then a slow ramp up to 7 (~4 min) so difficulty keeps growing
+	runner.vx = min(runner.vx + (runner.vx < 4.0f ? 0.03f : 0.0002f), 7.0f);
 
 	//Handling collisions with the ground
 	if (runner.y + runner.height >= groundPosition)
