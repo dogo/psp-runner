@@ -28,8 +28,9 @@ static HIT_BOX makeRunnerHitBox(RUNNER runner)
 	}
 	else
 	{
+		//The jump frame has the legs tucked: its feet are 6px above the running ones
 		box.top = runner.y + 5.0f;
-		box.bottom = runner.y + runner.height - 3.0f;
+		box.bottom = runner.y + runner.height - 8.0f;
 	}
 
 	return box;

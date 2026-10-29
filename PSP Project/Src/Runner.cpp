@@ -65,11 +65,6 @@ void Runner::handleRunner(RUNNER &runner)
 	//Releasing Cross while going up cuts the jump, so the player controls its length
 	if (osl_pad.released.cross && runner.vy < jumpCutSpeed)
 		runner.vy = jumpCutSpeed;
-
-	if(!runner.isGrounded)
-		runner.height = imgRunner->frameSizeY-5; //-5 Jumping
-	else if(runner.isGrounded)
-		runner.height = imgRunner->frameSizeY;
 }
 
 //Draw the runner
