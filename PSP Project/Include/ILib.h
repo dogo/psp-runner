@@ -36,7 +36,8 @@ const float jumpCutSpeed = -2.0f;
 //A Cross press is remembered this many frames, so pressing just before landing still jumps
 const int jumpBufferFrames = 6;
 const float groundPosition = 240.0f;
-//If we go further than that in the screen, the camera moves
-const float cameraLimitX = 240.0f;
+//If we go further than that in the screen, the camera moves.
+//Left of center so the player sees 320px ahead (34 frames of reaction at top speed with 240)
+const float cameraLimitX = 160.0f;
 
 #endif
