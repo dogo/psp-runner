@@ -69,7 +69,7 @@ trigger an OSLib fatal error at startup.
 
 ## Controls
 
-- `Cross`: jump
+- `Cross`: jump (release early for a shorter jump)
 - `Start`: pause or resume
 
 The runner accelerates automatically. The game ends when the runner collides
@@ -96,6 +96,17 @@ Important source files:
 - `Src/Runner.cpp`: player movement, jump, animation
 - `Src/Obstacles.cpp`: obstacle generation and collision
 - `Src/Ranking.cpp`: save/load scaffolding
+
+## Tests
+
+`PSP Project/Tests` runs the real game logic on the host (OSLib is stubbed) and
+checks, over 50 random seeds of 6 minutes, the speed ramp, that obstacles spawn
+off screen, and that every layout can be passed by a player who only sees the
+screen:
+
+```sh
+make -C "PSP Project/Tests"
+```
 
 ## Clean Build Artifacts
 

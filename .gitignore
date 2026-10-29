@@ -7,3 +7,6 @@ PSP Project/**/*.o
 
 # Saved best time
 PSP Project/Res/best.dat
+
+# Host simulation binary
+PSP Project/Tests/sim
