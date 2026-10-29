@@ -4,12 +4,9 @@
 //**************************************************************************
 
 #include "../Include/GameScreen.h"
-#include "../Include/ScreenManager.h"
 
 GameScreen::GameScreen()
 {
-	mType = OSL_DIALOG_NONE;
-
 	char backgroundPath[] = "/Res/background.png";
 	imgBackground = oslLoadImageFilePNG(backgroundPath, OSL_IN_RAM, OSL_PF_8888);
 	char groundPath[] = "/Res/ground.png";
@@ -34,11 +31,10 @@ GameScreen::GameScreen()
 
 void GameScreen::initGame()
 {
-	mPauseGame = false;
 	time = 0.0f;
-	gCameraX = gCameraY = 0.0f;
+	gCameraX = 0.0f;
 	difficulty = 199.0f;
-	mGameState = GS_SCROLL_MAP;
+	mGameState = GS_PLAYING;
 
 	//Runner Initialization
 	runner = mRunner->createRunner();
@@ -46,7 +42,6 @@ void GameScreen::initGame()
 	//Objects Initialization
 	mObstacles->resetSpawn();
 	objects[0] = mObstacles->createStone(OSL_SCREEN_WIDTH);
-	printf("OSL_SCREEN_WIDTH %d\n",OSL_SCREEN_WIDTH);
 	//Each stone is randomly placed at a distance from each other)
 	for (int i = 1; i < NB_OBJECTS; i++)
 	{
@@ -92,11 +87,11 @@ void GameScreen::draw()
 	oslPrintf_xy(0, 0, "Time: %i seconds  Best: %i seconds", (int)time, (int)mBestTime);
 
 	//Show Pause
-	if(mGameState == GS_PAUSE_MENU && mPauseGame)
+	if(mGameState == GS_PAUSE_MENU)
 		oslPrintf_xy(0, 8, "Pause");
 }
 
-void GameScreen::update(u32 timePassed)
+void GameScreen::update()
 {
 	// Game over?
 	if (runner.isDead)
@@ -117,15 +112,11 @@ void GameScreen::update(u32 timePassed)
 	if (osl_pad.pressed.start)
 	{
 		oslFlushKey();
-		mPauseGame = !mPauseGame; //Pause game!
-		if(mPauseGame)
-			SetGameState(GS_PAUSE_MENU);
-		else
-			SetGameState(GS_SCROLL_MAP);
+		mGameState = mGameState == GS_PAUSE_MENU ? GS_PLAYING : GS_PAUSE_MENU;
 	}
 
 	//Once paused, the game is "frozen"
-	if(mGameState != GS_PAUSE_MENU && !mPauseGame)
+	if(mGameState == GS_PLAYING)
 	{
 		mRunner->handleRunner(runner);
 
@@ -155,14 +146,4 @@ void GameScreen::update(u32 timePassed)
 		//The loop is executed every 1/60 seconds
 		time = time + 1.0f / 60.0f;
 	}
-}
-
-const GameState GameScreen::GetGameState()
-{
-	return mGameState;
-}
-
-void GameScreen::SetGameState(const GameState &newState)
-{
-	mGameState = newState;
 }

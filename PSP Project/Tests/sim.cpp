@@ -19,9 +19,8 @@
 #include "../Include/GameScreen.h"
 #undef private
 
-float gCameraX, gCameraY;
-char message[100];
-int gScreen, mNextScreen;
+float gCameraX;
+int mNextScreen;
 OSL_PAD_STUB osl_pad;
 u32 gSeed;
 
@@ -69,7 +68,7 @@ static bool recordLayout()
 
 	for (int frame = 0; frame < FRAMES; frame++)
 	{
-		game->update(16);
+		game->update();
 		game->runner.isDead = false;	//God mode
 
 		RUNNER &r = game->runner;

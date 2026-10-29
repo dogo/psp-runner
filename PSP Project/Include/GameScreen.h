@@ -15,13 +15,8 @@ using namespace std;
 
 enum GameState
 {
-	GS_SCROLL_MAP,			//User is scrolling on the map
-	GS_HANDLE_RANK,		//User has selected a tower to build and is placing it on the map
-	GS_PAUSE_MENU,			//Pause menu in game
-	GS_TOWER_MENU,			//User is choosing a tower from the menu
-	GS_GAME_OVER,			//Player has won or loose the game
-	GS_GAME_LOADED,			//All game items are loaded
-	GS_TOWER_UPGRADE_SELL	//User has selected a tower to upgrade or sell
+	GS_PLAYING,		//The runner is running
+	GS_PAUSE_MENU	//Pause menu in game
 };
 
 class GameScreen : public IScreen
@@ -41,10 +36,8 @@ private:
 	float difficulty;
 	float time;
 	float mBestTime;
-	bool mPauseGame;
 	//Scroll the background image
 	int scrollX;
-	int mType;
 	GameState mGameState;
 
 public:
@@ -54,15 +47,8 @@ public:
 
 	virtual void draw();
 
-	virtual void update(u32 timePassed);
-
-	bool collision(RUNNER runner, OBJECT obj);
+	virtual void update();
 
 	void initGame();
-
-	bool handleRanking();
-
-	const GameState GetGameState();
-	void SetGameState(const GameState &newState);
 };
 #endif

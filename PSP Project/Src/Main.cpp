@@ -15,10 +15,8 @@ PSP_HEAP_SIZE_KB(-1024);
 
 //Screen display
 int mNextScreen = -1;
-int	gScreen = 0;
 
-float gCameraX, gCameraY;
-char message[100] = "";
+float gCameraX;
 
 //Initialization
 int initOSLib()
@@ -41,12 +39,6 @@ int endOSLib()
 	return 0;
 }
 
-//Return time in milliseconds
-u32 GetTicks()
-{
-	return sceKernelGetSystemTimeLow()/1000;
-}
-
 int main()
 {
 	int skip = 0;
@@ -54,7 +46,6 @@ int main()
 
 	ScreenManager *mScreenManager = new ScreenManager();
 	mNextScreen = ScreenManager::SCREEN_ANYKEY;
-	u32 lastLoopTime = GetTicks();
 
 	while (!osl_quit)
 	{
@@ -62,9 +53,6 @@ int main()
 		{
 			oslStartDrawing();
 			oslCls();
-
-			u32 timeDifference = GetTicks() - lastLoopTime;
-			lastLoopTime += timeDifference;
 
 			if(mNextScreen != -1)
 			{
@@ -77,7 +65,7 @@ int main()
 			if(mScreenManager->isActive())
 			{	
 				mScreenManager->mCurrentScreen->draw();
-				mScreenManager->mCurrentScreen->update(timeDifference);
+				mScreenManager->mCurrentScreen->update();
 			}
 			oslEndDrawing();
 		}

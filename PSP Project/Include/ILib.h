@@ -20,9 +20,7 @@ using namespace std;
 /*
 	Globals
 */
-extern float gCameraX, gCameraY;
-extern char message[100];
-extern int gScreen;
+extern float gCameraX;
 extern int mNextScreen;
 
 /*

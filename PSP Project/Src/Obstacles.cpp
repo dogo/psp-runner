@@ -165,7 +165,7 @@ void Obstacles::drawObject(OBJECT obj)
 	case STUMP:
 	case CRYSTAL:
 		// Drawing relative to the camera ...
-		oslDrawImageXY(imgObstacles[obj.type], (int)(obj.x - gCameraX), (int)(obj.y - gCameraY));
+		oslDrawImageXY(imgObstacles[obj.type], (int)(obj.x - gCameraX), (int)obj.y);
 		break;
 	case NB_OBSTACLE_TYPES:
 		break;

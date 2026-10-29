@@ -22,6 +22,6 @@ public:
 
 	virtual void draw();
 
-	virtual void update(u32 timePassed);
+	virtual void update();
 };
 #endif

@@ -23,10 +23,10 @@ AnykeyScreen::~AnykeyScreen()
 void AnykeyScreen::draw()
 {
 	//draw logo image
-	mySplash->drawSplash(200,AnykeySplash);
+	mySplash->drawSplash(AnykeySplash);
 }
 
-void AnykeyScreen::update(u32 /*timePassed*/) //Parametro Formal, não dá warning
+void AnykeyScreen::update()
 {
 	mWait++;
 	if(mWait == 250) //wait 250 frames until this screen is over

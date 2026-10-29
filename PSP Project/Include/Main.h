@@ -7,9 +7,7 @@
 
 #include "../Include/ILib.h"
 #include "../Include/ScreenManager.h"
-#include <psprtc.h>
 
 int initOSLib();
 int endOSLib();
-u32 GetTicks();
 #endif

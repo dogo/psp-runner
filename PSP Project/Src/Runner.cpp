@@ -79,7 +79,7 @@ void Runner::drawRunner(RUNNER &runner)
 		oslSetImageFrame(imgRunner, 2);
 	}
 	// Drawing relative to the camera ...
-	oslDrawImageXY(imgRunner, (int)(runner.x - gCameraX), (int)(runner.y - gCameraY));
+	oslDrawImageXY(imgRunner, (int)(runner.x - gCameraX), (int)runner.y);
 }
 
 // Returns an initialized object runner
