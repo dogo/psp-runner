@@ -9,23 +9,10 @@
 
 class Ranking
 {
-private:
-	struct oslSaveLoad MemoryStickData;
-	char loadedData[100];
-	/**
-	*	Data for save and load:
-	*/
-	const char *gameTitle;
-	const char *gameID;
-	const char *saveName;
-
 public:
-	Ranking();
-	~Ranking();
-	void LoadRanking();
-	void SaveRanking(char *aData);
-	void SetNewRanking();
-	void Status(int type);
+	//Returns the best time saved, or 0 if there is none
+	float LoadRanking();
+	void SaveRanking(float bestTime);
 };
 
 #endif

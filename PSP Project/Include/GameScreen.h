@@ -40,6 +40,7 @@ private:
 	Ranking *mMemoryStick;
 	float difficulty;
 	float time;
+	float mBestTime;
 	bool mPauseGame;
 	//Scroll the background image
 	int scrollX;

@@ -25,6 +25,7 @@ GameScreen::GameScreen()
 	oslPlaySound(music, 0);
 
 	mMemoryStick = new Ranking();
+	mBestTime = mMemoryStick->LoadRanking();
 	mRunner = new Runner();
 	mObstacles = new Obstacles();
 
@@ -88,7 +89,7 @@ void GameScreen::draw()
 	// Displays the time at the top of the screen
 	oslSetBkColor(RGBA(0, 0, 0, 128));
 	oslSetTextColor(RGB(255, 255, 255));
-	oslPrintf_xy(0, 0, "Time: %i seconds", (int)time);
+	oslPrintf_xy(0, 0, "Time: %i seconds  Best: %i seconds", (int)time, (int)mBestTime);
 
 	//Show Pause
 	if(mGameState == GS_PAUSE_MENU && mPauseGame)
@@ -101,7 +102,14 @@ void GameScreen::update(u32 timePassed)
 	if (runner.isDead)
 	{
 		char score[256];
-		sprintf(score, "You lost!\nYour time: %#1.2f seconds", time);
+		if (time > mBestTime)
+		{
+			mBestTime = time;
+			mMemoryStick->SaveRanking(mBestTime);
+			sprintf(score, "New record!\nYour time: %#1.2f seconds", time);
+		}
+		else
+			sprintf(score, "You lost!\nYour time: %#1.2f seconds\nBest: %#1.2f seconds", time, mBestTime);
 		oslMessageBox(score, "Game Over", oslMake3Buttons(OSL_KEY_SQUARE, OSL_MB_OK, 0, 0, 0, 0));
 		initGame();
 	}
